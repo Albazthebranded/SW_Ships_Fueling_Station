@@ -1,0 +1,5 @@
+package Ships;
+
+public enum ShipBrand {
+    MONCALAMARICRUISER, NUBIAN, STARDESTROYER, TIEFIGHTER, XWING
+}

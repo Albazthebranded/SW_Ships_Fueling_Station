@@ -1,0 +1,2 @@
+[Grand Moff Tarkin, The Sovereign, CAPITAL, 45000000]
+[Padme Amidala, Naboo Royal Starship, TRANSPORT, 5000000]
