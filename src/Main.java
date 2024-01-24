@@ -9,7 +9,7 @@ public class Main {
     public static void main(String[] args) throws InterruptedException {
         Scanner scan = new Scanner(System.in);
         D4C D4C = new D4C();
-        String action;
+        String clientAction;
 
         D4C.operate(D4CCommands.INTRO);
         D4C.operate(D4CCommands.CHECKACCESS);
@@ -17,15 +17,25 @@ public class Main {
 
         while (true) {
 
-            action = scan.nextLine();
+            clientAction = scan.nextLine();
 
-            if (!action.equalsIgnoreCase("client") && !action.equalsIgnoreCase("employee")
-                    && !action.equalsIgnoreCase("ISB") && !action.equalsIgnoreCase("leave")) {
-                D4C.operate(D4CCommands.ERROR);
+            serveClient(clientAction);
+
+            if (!clientAction.equalsIgnoreCase("client") && !clientAction.equalsIgnoreCase("employee")
+                    && !clientAction.equalsIgnoreCase("ISB") && !clientAction.equalsIgnoreCase("leave")) {
                 continue;
-            } else if (action.equalsIgnoreCase("leave")) {
-                D4C.operate(D4CCommands.LEAVE);
-            } else if (action.equalsIgnoreCase("client")) {
+            }
+
+            System.exit(0);
+        }
+    }
+
+    public static void serveClient(String clientAction) throws InterruptedException {
+        D4C D4C = new D4C();
+
+        switch (clientAction.toUpperCase()) {
+            case ("LEAVE") -> D4C.operate(D4CCommands.LEAVE);
+            case ("CLIENT") -> {
                 D4C.operate(D4CCommands.CLIENT);
                 Client client = new Client(D4C.getClientName(), D4C.getClientShipName(), D4C.getClientShipBrand());
 
@@ -40,20 +50,20 @@ public class Main {
                 D4C.calculateFuelCost(ship);
                 D4C.saveClientData(client, ship);
                 D4C.operate(D4CCommands.PROCESSCLIENT);
-
-            } else if (action.equalsIgnoreCase("employee")) {
-
+            }
+            case ("EMPLOYEE") -> {
                 D4C.operate(D4CCommands.EMPLOYEE);
                 D4C.operate(D4CCommands.CHECKPRICES);
                 D4C.operate(D4CCommands.WISHPLEASANTWORK);
-
-            } else if (action.equalsIgnoreCase("ISB")) {
-
+            }
+            case ("ISB") -> {
                 D4C.operate(D4CCommands.ISB);
                 D4C.operate(D4CCommands.GRANTISBACCESSTOFILES);
 
             }
-            System.exit(0);
+            default -> {
+                D4C.operate(D4CCommands.ERROR);
+            }
         }
     }
 }

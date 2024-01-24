@@ -1,2 +1,5 @@
 [Grand Moff Tarkin, The Sovereign, CAPITAL, 45000000]
 [Padme Amidala, Naboo Royal Starship, TRANSPORT, 5000000]
+[Yafka, Korab, FIGHTER, 400000]
+[yafka, yafkaship, CAPITAL, 45000000]
+[uadasda, agagag, CAPITAL, 45000000]
